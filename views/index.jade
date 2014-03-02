@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  #coffee
+    //- .indicator_light
+    form(method='POST' action='/make')
+      input(type='email', name='email', placeholder='Email address')
+      br
+      button(type='submit', name='cups', value='1', class='btn btn-primary') 1 Cup
+      button(type='submit', name='cups', value='2', class='btn btn-primary') 2 Cups
+      button(type='submit', name='cups', value='4', class='btn btn-primary') 4 Cups
+      button(type='submit', name='cups', value='6', class='btn btn-primary') 6 Cups

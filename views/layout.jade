@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title= title
+    link(href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block head
+    script.
+      xmlhttp=new XMLHttpRequest();
+      var myFunction = function() {
+      xmlhttp.onreadystatechange=function()
+          {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+              if (parseInt(xmlhttp.responseText)) {
+                document.getElementById("seconds").innerHTML=['Seconds remaining: '+xmlhttp.responseText];
+                document.getElementById("seconds").className = "seconds";
+              } else {
+                document.getElementById("seconds").innerHTML=['Ready.'];
+                document.getElementById("seconds").className = "ready";
+              }
+            }
+          }
+          xmlhttp.open("GET","readyornot.txt",true);
+          xmlhttp.send();
+      };
+      var timer =  setInterval(myFunction, 1000); // call every 100 milliseconds
+
+  body
+    a(href='/')
+      img(src="/bin/acm.png", alt="ACM presents", class="acm")
+      img(src="/bin/C++.png", alt="Coffeeplusplus",width="600" height="300" class="Cplusplus")
+    p#seconds
+    a(href='http://www.sendgrid.com'): img(src="/bin/sendgrid.png", alt="sendgrid", class="sendgrid")
+    block content
